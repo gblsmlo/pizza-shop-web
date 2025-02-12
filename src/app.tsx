@@ -1,11 +1,11 @@
-import { Helmet, HelmetProvider } from "react-helmet-async";
-import { BrowserRouter, Route, Routes } from "react-router";
-import { Toaster } from "./components/ui/sonner";
-import { AppLayout } from "./pages/app/_layouts/app";
-import { AuthLayout } from "./pages/app/_layouts/auth";
-import { Dashboard } from "./pages/app/dashboard";
-import { Settings } from "./pages/app/settings";
-import { SignIn } from "./pages/auth/sign-in";
+import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { BrowserRouter, Route, Routes } from 'react-router'
+import { Toaster } from './components/ui/sonner'
+import { AppLayout } from './pages/app/_layouts/app'
+import { AuthLayout } from './pages/app/_layouts/auth'
+import { Dashboard } from './pages/app/dashboard'
+import { Settings } from './pages/app/settings'
+import { SignIn } from './pages/auth/sign-in'
 
 export const App = () => {
 	return (

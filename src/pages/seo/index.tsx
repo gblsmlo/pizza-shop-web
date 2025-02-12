@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet-async"
+import { Helmet } from 'react-helmet-async'
 
-interface SEOProps  {
+interface SEOProps {
 	title: string
 	description: string
 }

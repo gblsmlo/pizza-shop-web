@@ -8,13 +8,17 @@ import { toast } from 'sonner'
 import { z } from 'zod'
 
 const signInFormSchema = z.object({
-	email: z.string().email()
+	email: z.string().email(),
 })
 
 type SignInForm = z.infer<typeof signInFormSchema>
 
 export function SignIn() {
-	const { handleSubmit, register, formState: { isSubmitting } } = useForm<SignInForm>()
+	const {
+		handleSubmit,
+		register,
+		formState: { isSubmitting },
+	} = useForm<SignInForm>()
 	useDocumentTitle('Sign In')
 
 	async function handleSignIn(data: SignInForm) {
