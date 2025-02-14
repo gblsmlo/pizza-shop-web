@@ -1,4 +1,3 @@
-import { PageTitle } from '@/components/ui/page-title'
 import { useDocumentTitle } from '@/hooks/document-title'
 
 export function Dashboard() {
@@ -6,7 +5,7 @@ export function Dashboard() {
 
 	return (
 		<>
-			<PageTitle title="Dashboard" />
+			<h1>Dash</h1>
 		</>
 	)
 }

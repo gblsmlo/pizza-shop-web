@@ -1,9 +1,9 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Toaster } from '@/components/ui/sonner'
 import { useDocumentTitle } from '@/hooks/document-title'
 import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
@@ -14,6 +14,8 @@ const signInFormSchema = z.object({
 type SignInForm = z.infer<typeof signInFormSchema>
 
 export function SignIn() {
+	const navigate = useNavigate()
+
 	const {
 		handleSubmit,
 		register,
@@ -22,14 +24,26 @@ export function SignIn() {
 	useDocumentTitle('Sign In')
 
 	async function handleSignIn(data: SignInForm) {
-		await new Promise((resolver) => setTimeout(resolver, 2000))
-		console.log(data)
+		try {
+			await new Promise((resolver) => setTimeout(resolver, 2000))
+			console.log(data)
 
-		toast('Event has been created.')
+			toast.success('Restaurante cadastrado com sucesso!', {
+				action: {
+					label: 'Login',
+					onClick: () => navigate('/sign-up'),
+				},
+			})
+		} catch (error) {
+			toast.error('Erro ao cadastrar restaurante.')
+		}
 	}
 
 	return (
 		<>
+			<Button variant="ghost" asChild className="absolute top-8 right-8">
+				<Link to="/sign-up">Criar conta</Link>
+			</Button>
 			<div className="p-8">
 				<div className="flex w-[350px] flex-col justify-center gap-6">
 					<div className="flex flex-col gap-2 text-center">
