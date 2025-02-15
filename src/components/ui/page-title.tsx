@@ -1,11 +1,11 @@
 interface PageTitleProps {
-	title: string
+	text: string
 }
 
-export function PageTitle({ title }: PageTitleProps) {
+export function PageTitle({ text }: PageTitleProps) {
 	return (
 		<>
-			<h1>{title}</h1>
+			<h1 className="font-bold text-3xl tracking-tight">{text}</h1>
 		</>
 	)
 }

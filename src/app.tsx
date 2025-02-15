@@ -4,6 +4,7 @@ import { Toaster } from './components/ui/sonner'
 import { AppLayout } from './pages/app/_layouts/app'
 import { AuthLayout } from './pages/app/_layouts/auth'
 import { Dashboard } from './pages/app/dashboard'
+import { Orders } from './pages/app/orders/orders'
 import { Settings } from './pages/app/settings'
 import { SignIn } from './pages/auth/sign-in'
 import { SignUp } from './pages/auth/sign-up'
@@ -16,6 +17,7 @@ export const App = () => {
 					<Route path="/" element={<AppLayout />}>
 						<Route index element={<Dashboard />} />
 						<Route path="settings" element={<Settings />} />
+						<Route path="orders" element={<Orders />} />
 					</Route>
 					<Route element={<AuthLayout />}>
 						<Route path="sign-in" element={<SignIn />} />
