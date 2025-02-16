@@ -1,5 +1,3 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { PageTitle } from '@/components/ui/page-title'
 import {
 	Table,
