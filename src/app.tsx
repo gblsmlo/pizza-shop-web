@@ -15,7 +15,7 @@ import { SignUp } from './pages/auth/sign-up'
 export const App = () => {
 	return (
 		<ThemeProvider defaultTheme="dark" storageKey="pizzashop-theme">
-			<QueryClientProvider client={queryClient} >
+			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<Routes>
 						<Route path="/" element={<AppLayout />}>
