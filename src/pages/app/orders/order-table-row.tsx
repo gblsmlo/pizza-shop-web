@@ -12,9 +12,7 @@ export function OrderTableRow() {
 			<TableCell className="font-medium font-mono text-xs">
 				{nanoid()}
 			</TableCell>
-			<TableCell className="text-muted-foreground">
-				há 15 minutos
-			</TableCell>
+			<TableCell className="text-muted-foreground">há 15 minutos</TableCell>
 			<TableCell>
 				<div className="flex items-center gap-2">
 					<span className="h-2 w-2 rounded-full bg-amber-500" />
