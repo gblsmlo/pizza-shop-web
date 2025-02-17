@@ -28,10 +28,14 @@ export function SignIn() {
 
 	const navigate = useNavigate()
 
-	const { handleSubmit, register, formState: { isSubmitting } } = useForm<SignInForm>({
+	const {
+		handleSubmit,
+		register,
+		formState: { isSubmitting },
+	} = useForm<SignInForm>({
 		defaultValues: {
-			email: searchParams.get('email') || ''
-		}
+			email: searchParams.get('email') || '',
+		},
 	})
 
 	async function handleSignIn(data: SignInForm) {
@@ -39,7 +43,7 @@ export function SignIn() {
 			// await new Promise((resolver) => setTimeout(resolver, 2000))
 
 			await authenticate({
-				email: data.email
+				email: data.email,
 			})
 
 			toast.success('Restaurante cadastrado com sucesso!', {

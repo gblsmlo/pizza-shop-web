@@ -25,7 +25,7 @@ export function SignUp() {
 	const navigate = useNavigate()
 
 	const { mutateAsync: registerRestaurantFn } = useMutation({
-		mutationFn: registerRestaurant
+		mutationFn: registerRestaurant,
 	})
 
 	const {
@@ -36,12 +36,11 @@ export function SignUp() {
 
 	async function handleSignUp(data: SignUpForm) {
 		try {
-
 			await registerRestaurantFn({
 				restaurantName: data.restaurantName,
 				managerName: data.managerName,
 				email: data.email,
-				phone: data.phone
+				phone: data.phone,
 			})
 
 			toast.success('Restaurante cadastrado com sucesso!', {

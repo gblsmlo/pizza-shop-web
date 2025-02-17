@@ -1,4 +1,4 @@
-import { api } from "@/lib/axios"
+import { api } from '@/lib/axios'
 
 interface RegisterRestaurantBody {
 	restaurantName: string
@@ -11,13 +11,12 @@ export async function registerRestaurant({
 	restaurantName,
 	managerName,
 	email,
-	phone
-}: RegisterRestaurantBody ) {
-
+	phone,
+}: RegisterRestaurantBody) {
 	await api.post('/restaurants', {
 		restaurantName,
 		managerName,
 		email,
-		phone
+		phone,
 	})
 }
