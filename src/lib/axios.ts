@@ -6,7 +6,7 @@ export const api = axios.create({
 	withCredentials: true,
 })
 
-if(env.VITE_API_ENABLE_DELAY) {
+if (env.VITE_API_ENABLE_DELAY) {
 	api.interceptors.request.use(async (config) => {
 		await new Promise((resolve) => setTimeout(resolve, 2000))
 

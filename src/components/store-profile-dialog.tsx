@@ -46,7 +46,6 @@ export function StoreProfileDialog() {
 	const { mutateAsync: updateProfileFn } = useMutation({
 		mutationFn: updateProfile,
 		onSuccess: (_, { name, description }) => {
-
 			const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
 				'managed-restaurant',
 			])
