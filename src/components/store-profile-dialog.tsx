@@ -6,9 +6,11 @@ import { updateProfile } from '@/api/update-profile'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
+import { toast } from 'sonner'
 import { z } from 'zod'
 import { Button } from './ui/button'
 import {
+	DialogClose,
 	DialogContent,
 	DialogDescription,
 	DialogFooter,
@@ -35,7 +37,7 @@ export function StoreProfileDialog() {
 		staleTime: Number.POSITIVE_INFINITY,
 	})
 
-	const { register, handleSubmit } = useForm<StoreProfile>({
+	const { register, handleSubmit, formState: { isSubmitting } } = useForm<StoreProfile>({
 		resolver: zodResolver(storeProfileSchema),
 		values: {
 			name: managedRestaurant?.name ?? '',
@@ -55,23 +57,38 @@ export function StoreProfileDialog() {
 				description,
 			})
 		}
+
+		return { cached }
 	}
 
 	const { mutateAsync: updateProfileFn } = useMutation({
 		mutationFn: updateProfile,
 		onMutate({ name, description }) {
-			updateManagedRestaurantCache({
+			const { cached } = updateManagedRestaurantCache({
 				name,
 				description
 			})
+
+			return { previousProfile: cached}
+		},
+		onError(_, __, context) {
+			if(context?.previousProfile) {
+				updateManagedRestaurantCache(context.previousProfile)
+			}
 		}
 	})
 
-	function handleUpdateProfile(data: StoreProfile) {
-		updateProfileFn({
-			name: data.name,
-			description: data.description,
-		})
+	async function handleUpdateProfile(data: StoreProfile) {
+		try {
+			await updateProfileFn({
+				name: data.name,
+				description: data.description,
+			})
+
+			toast.success('Perfil atualizado com sucesso')
+		} catch (error) {
+			toast.success('Falha ao atualizar o perfil')
+		}
 	}
 
 	return (
@@ -105,10 +122,12 @@ export function StoreProfileDialog() {
 				</div>
 
 				<DialogFooter>
-					<Button variant="ghost" type="button">
-						Cancelar
-					</Button>
-					<Button type="submit" variant="default">
+					<DialogClose asChild>
+						<Button variant="ghost" type="button">
+							Cancelar
+						</Button>
+					</DialogClose>
+					<Button type="submit" variant="default" disabled={isSubmitting}>
 						Salvar
 					</Button>
 				</DialogFooter>

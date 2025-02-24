@@ -1,26 +1,48 @@
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogTrigger } from '@/components/ui/dialog'
 import { Separator } from '@/components/ui/separator'
 import { TableCell, TableRow } from '@/components/ui/table'
-import { nanoid } from '@/lib/nanoid'
 import { ArrowRight, Search, X } from 'lucide-react'
 import { OrderDetails } from './order-details'
 
-export function OrderTableRow() {
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import { OrderStatus } from './order-status'
+
+interface OrderTableRowProps {
+	order: {
+		orderId: string
+		createdAt: string
+		status: 'pending' | 'canceled' | 'processing' | 'delivering' | 'delivered'
+		customerName: string
+		total: number
+	}
+}
+
+export function OrderTableRow({ order }: OrderTableRowProps) {
 	return (
 		<TableRow>
 			<TableCell className="font-medium font-mono text-xs">
-				{nanoid()}
+				{order.orderId}
 			</TableCell>
-			<TableCell className="text-muted-foreground">há 15 minutos</TableCell>
+			<TableCell className="text-muted-foreground">
+				{ formatDistanceToNow(order.createdAt, {
+						locale: ptBR,
+						addSuffix: true
+					})
+				}
+			</TableCell>
 			<TableCell>
-				<div className="flex items-center gap-2">
-					<span className="h-2 w-2 rounded-full bg-amber-500" />
-					<span>Pendente</span>
-				</div>
+				<OrderStatus status={order.status} />
 			</TableCell>
-			<TableCell className="font-medium">Gabriel Melo</TableCell>
-			<TableCell className="font-medium">R$ 149,00</TableCell>
+			<TableCell className="font-medium">{ order.customerName } </TableCell>
+			<TableCell className="font-medium">
+				{ order.total.toLocaleString('pt-BR', {
+						style: 'currency',
+						currency: 'BRL'
+					})
+				}
+			</TableCell>
 
 			<TableCell>
 				<div className="flex justify-end gap-2">
