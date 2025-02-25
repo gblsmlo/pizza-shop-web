@@ -6,7 +6,7 @@ type OrderStatus =
 	| 'delivered'
 
 type OrderStatusProps = {
-	status: OrderStatus
+	status: OrderStatus | null
 }
 
 const orderStatusMap: Record<OrderStatus, string> = {

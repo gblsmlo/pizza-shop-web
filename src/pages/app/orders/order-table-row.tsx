@@ -7,6 +7,7 @@ import { OrderDetails } from './order-details'
 
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { useState } from 'react'
 import { OrderStatus } from './order-status'
 
 interface OrderTableRowProps {
@@ -20,6 +21,8 @@ interface OrderTableRowProps {
 }
 
 export function OrderTableRow({ order }: OrderTableRowProps) {
+	const [isDetailsOpen, setIsDetailsOpen] = useState(false)
+
 	return (
 		<TableRow>
 			<TableCell className="font-medium font-mono text-xs">
@@ -44,14 +47,14 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
 
 			<TableCell>
 				<div className="flex justify-end gap-2">
-					<Dialog>
+					<Dialog open={isDetailsOpen} onOpenChange={setIsDetailsOpen}>
 						<DialogTrigger asChild>
 							<Button variant="outline" size="sm">
 								<Search className="h-3 w-3" />
 								<span className="sr-only">Detalhes do pedido</span>
 							</Button>
 						</DialogTrigger>
-						<OrderDetails />
+						<OrderDetails orderId={order.orderId} open={isDetailsOpen} />
 					</Dialog>
 					<Separator orientation="vertical" className="h-8 w-px" />
 					<Button variant="outline" size="sm" className="mr-2">
