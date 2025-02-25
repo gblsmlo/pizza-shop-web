@@ -35,7 +35,7 @@ export function Orders() {
 				pageIndex,
 				orderId,
 				customerName,
-				status: status === 'all' ? null : status
+				status: status === 'all' ? null : status,
 			}),
 	})
 
