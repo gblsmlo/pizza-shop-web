@@ -37,7 +37,11 @@ export function StoreProfileDialog() {
 		staleTime: Number.POSITIVE_INFINITY,
 	})
 
-	const { register, handleSubmit, formState: { isSubmitting } } = useForm<StoreProfile>({
+	const {
+		register,
+		handleSubmit,
+		formState: { isSubmitting },
+	} = useForm<StoreProfile>({
 		resolver: zodResolver(storeProfileSchema),
 		values: {
 			name: managedRestaurant?.name ?? '',
@@ -45,7 +49,7 @@ export function StoreProfileDialog() {
 		},
 	})
 
-	function updateManagedRestaurantCache({ name, description}: StoreProfile) {
+	function updateManagedRestaurantCache({ name, description }: StoreProfile) {
 		const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
 			'managed-restaurant',
 		])
@@ -66,16 +70,16 @@ export function StoreProfileDialog() {
 		onMutate({ name, description }) {
 			const { cached } = updateManagedRestaurantCache({
 				name,
-				description
+				description,
 			})
 
-			return { previousProfile: cached}
+			return { previousProfile: cached }
 		},
 		onError(_, __, context) {
-			if(context?.previousProfile) {
+			if (context?.previousProfile) {
 				updateManagedRestaurantCache(context.previousProfile)
 			}
-		}
+		},
 	})
 
 	async function handleUpdateProfile(data: StoreProfile) {

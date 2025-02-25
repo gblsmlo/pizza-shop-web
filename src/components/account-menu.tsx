@@ -37,9 +37,9 @@ export function AccountMenu() {
 		mutationFn: signOut,
 		onSuccess: () => {
 			navigate('/sign-in', {
-				replace: true
+				replace: true,
 			})
-		}
+		},
 	})
 
 	return (

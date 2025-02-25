@@ -26,22 +26,20 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
 				{order.orderId}
 			</TableCell>
 			<TableCell className="text-muted-foreground">
-				{ formatDistanceToNow(order.createdAt, {
-						locale: ptBR,
-						addSuffix: true
-					})
-				}
+				{formatDistanceToNow(order.createdAt, {
+					locale: ptBR,
+					addSuffix: true,
+				})}
 			</TableCell>
 			<TableCell>
 				<OrderStatus status={order.status} />
 			</TableCell>
-			<TableCell className="font-medium">{ order.customerName } </TableCell>
+			<TableCell className="font-medium">{order.customerName} </TableCell>
 			<TableCell className="font-medium">
-				{ order.total.toLocaleString('pt-BR', {
-						style: 'currency',
-						currency: 'BRL'
-					})
-				}
+				{order.total.toLocaleString('pt-BR', {
+					style: 'currency',
+					currency: 'BRL',
+				})}
 			</TableCell>
 
 			<TableCell>
