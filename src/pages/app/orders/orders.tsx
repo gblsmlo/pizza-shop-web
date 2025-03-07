@@ -40,11 +40,7 @@ export function Orders() {
 	})
 
 	function handlePaginate(pageIndex: number) {
-		console.log(pageIndex)
-
 		setSearchParams((state) => {
-			console.log(state)
-
 			state.set('page', (pageIndex + 1).toString())
 
 			return state

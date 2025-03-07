@@ -1,6 +1,4 @@
-import {
-	getOrderDetails,
-} from '@/api/get-order-details'
+import { getOrderDetails } from '@/api/get-order-details'
 import {
 	DialogContent,
 	DialogDescription,
@@ -32,7 +30,6 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
 		queryFn: () => getOrderDetails({ orderId }),
 		enabled: open,
 	})
-
 
 	return (
 		<DialogContent>
