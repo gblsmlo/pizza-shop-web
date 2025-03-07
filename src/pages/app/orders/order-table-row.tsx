@@ -58,15 +58,13 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
 		})
 	}
 
-	const {
-		mutateAsync: cancelOrderFn,
-		isPending: isCancelingOrder,
-	} = useMutation({
-		mutationFn: cancelOrder,
-		async onSuccess(_, { orderId }) {
-			updateOrderStatusOnCache(orderId, 'canceled')
-		},
-	})
+	const { mutateAsync: cancelOrderFn, isPending: isCancelingOrder } =
+		useMutation({
+			mutationFn: cancelOrder,
+			async onSuccess(_, { orderId }) {
+				updateOrderStatusOnCache(orderId, 'canceled')
+			},
+		})
 
 	const { mutateAsync: approveOrderFn, isPending: isApprovingOrder } =
 		useMutation({
@@ -76,20 +74,21 @@ export function OrderTableRow({ order }: OrderTableRowProps) {
 			},
 		})
 
-	const { mutateAsync: dispatchOrderFn, isPending: isDispathingOrder } = useMutation({
-		mutationFn: dispatchOrder,
-		async onSuccess(_, { orderId }) {
-			updateOrderStatusOnCache(orderId, 'delivering')
-		},
-	})
+	const { mutateAsync: dispatchOrderFn, isPending: isDispathingOrder } =
+		useMutation({
+			mutationFn: dispatchOrder,
+			async onSuccess(_, { orderId }) {
+				updateOrderStatusOnCache(orderId, 'delivering')
+			},
+		})
 
-	const { mutateAsync: deliverOrderFn, isPending: isDeliveringOrder } = useMutation({
-		mutationFn: deliverOrder,
-		async onSuccess(_, { orderId }) {
-			updateOrderStatusOnCache(orderId, 'delivered')
-		},
-	})
-
+	const { mutateAsync: deliverOrderFn, isPending: isDeliveringOrder } =
+		useMutation({
+			mutationFn: deliverOrder,
+			async onSuccess(_, { orderId }) {
+				updateOrderStatusOnCache(orderId, 'delivered')
+			},
+		})
 
 	return (
 		<TableRow>
