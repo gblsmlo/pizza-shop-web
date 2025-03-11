@@ -10,17 +10,17 @@ export function AppLayout() {
 	useEffect(() => {
 		const interceptorId = api.interceptors.response.use(
 			(response) => response,
-			error => {
-				if(isAxiosError(error)) {
+			(error) => {
+				if (isAxiosError(error)) {
 					const status = error.response?.status
 
 					const code = error.response?.data?.code
 
-					if(status === 401 && code === 'UNAUTHORIZED') {
-						navigate('/login')
+					if (status === 401 && code === 'UNAUTHORIZED') {
+						navigate('/sign-in')
 					}
 				}
-			}
+			},
 		)
 
 		return () => {
