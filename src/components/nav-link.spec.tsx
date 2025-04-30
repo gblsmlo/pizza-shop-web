@@ -13,9 +13,7 @@ describe('NavLink', () => {
 			{
 				wrapper: ({ children }) => {
 					return (
-						<MemoryRouter initialEntries={['/about']}>
-							{children}
-						</MemoryRouter>
+						<MemoryRouter initialEntries={['/about']}>{children}</MemoryRouter>
 					)
 				},
 			},
@@ -23,6 +21,5 @@ describe('NavLink', () => {
 
 		expect(wrapper.getByText('Home').dataset.current).toBe('false')
 		expect(wrapper.getByText('About').dataset.current).toBe('true')
-
 	})
 })

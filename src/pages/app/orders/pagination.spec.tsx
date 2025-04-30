@@ -1,5 +1,5 @@
-import { Pagination } from "@/components/pagination"
-import { render } from "@testing-library/react"
+import { Pagination } from '@/components/pagination'
+import { render } from '@testing-library/react'
 
 describe('Pagination', () => {
 	it('should display the right amount of pages and results', () => {
@@ -17,7 +17,6 @@ describe('Pagination', () => {
 	})
 
 	it('should be able to navigate to the next page', () => {
-
 		const wrapper = render(
 			<Pagination
 				pageIndex={0}

@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 import { OrderStatus } from './order-status'
 
 describe('Order Status', () => {
-  it('should display the right text when order status is pedding', () => {
+	it('should display the right text when order status is pedding', () => {
 		const wrapper = render(<OrderStatus status="pending" />)
 
 		const statusText = wrapper.getByText('Pendente')
