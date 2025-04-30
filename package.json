@@ -1,5 +1,5 @@
 {
-	"name": "@tc96/react-starter",
+	"name": "pizza-shop-web",
 	"version": "0.8.0",
 	"type": "module",
 	"scripts": {
@@ -50,11 +50,15 @@
 		"@biomejs/biome": "1.9.4",
 		"@commitlint/cli": "19.6.1",
 		"@commitlint/config-conventional": "19.6.0",
+		"@testing-library/dom": "^10.4.0",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.2.0",
 		"@types/react": "^19.0.8",
 		"@types/react-dom": "^19.0.3",
 		"@vitejs/plugin-react": "^4.3.4",
 		"autoprefixer": "10.4.20",
 		"globals": "^15.13.0",
+		"happy-dom": "^17.4.3",
 		"husky": "9.1.7",
 		"npm-check-updates": "^17.1.14",
 		"typescript": "~5.6.2",
